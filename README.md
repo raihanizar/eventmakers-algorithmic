@@ -1,30 +1,22 @@
-This is a [Next.js](https://nextjs.org/) template bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app). This template is used as part of the Devscale Bootcamp course.
+> **NOTE:** Ini adalah aplikasi untuk project assignment 5 dari bootcamp [devscale.id](https://devscale.id) Batch IV.
 
-## Getting Started
+## Yang perlu diperhatikan dalam berkontribusi:
 
-First, run the development server:
+### Cek Task
+- Kerjakan *task* sesuai yang tertera pada [halaman project](https://github.com/users/raihanizar/projects/1).
+- Diskusi, masukan, dan revisi *task*, **berikan komentar langsung** ke dalam *task* yang bersangkutan.
+- Permasalahan kode, minta bantuan, **berikan komentar & contoh kode** yang bermasalah ke dalam *task* yang bersangkutan.
 
-```bash
-npm run dev
-```
+### Cek Kode
+- Pastikan kode **berjalan dengan benar** sebelum melakukan *pull request*.
+- Hanya ubah **kode yang relevan** dengan *task*.
+- Perhatikan standar penulisan:
+  - Nama variabel menggunakan camelCase: `eventName`, `joinEventId`
+  - Nama file component menggunakan huruf kapital: `Header jsx`, `Button.jsx` 
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Cek Git
+- Selalu **cek kondisi git** (`git status`) sebelum melakukan push.
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+---
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+### Good Luck tim Algorithmic! 🎉

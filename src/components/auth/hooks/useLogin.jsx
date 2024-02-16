@@ -7,7 +7,9 @@ export const useLogin = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  async function handleLogin() {
+  async function handleLogin(event) {
+    event.preventDefault();
+    
     const res = await fetch("https://eventmakers-api.fly.dev/auth/login", {
       method: "POST",
       headers: {
@@ -28,5 +30,5 @@ export const useLogin = () => {
     Cookies.set("token", token);
   }
 
-  return { handleLogin, setEmail, setPassword };
+  return { handleSubmitLogin, setEmail, setPassword };
 };

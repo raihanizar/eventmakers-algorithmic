@@ -3,17 +3,14 @@
 import { useLogin } from "../hooks/useLogin";
 
 export const Login = () => {
-  const { handleSubmitLogin, setEmail, setPassword } = useLogin();
+  const { handlerSubmitLogin, setEmail, setPassword } = useLogin();
 
   return (
     <div>
-      <form onSubmit={handleSubmitLogin}>
+      <form onSubmit={handlerSubmitLogin}>
+        <input name="email" onChange={(e) => setEmail(e.target.value)}></input>
         <input
-          placeholder="email"
-          onChange={(e) => setEmail(e.target.value)}
-        ></input>
-        <input
-          placeholder="password"
+          name="password"
           type="password"
           onChange={(e) => setPassword(e.target.value)}
         ></input>

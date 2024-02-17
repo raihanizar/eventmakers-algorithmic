@@ -1,15 +1,15 @@
-"use client";
-
-import { useState } from "react";
 import Cookies from "js-cookie";
+import { useRouter } from "next/navigation";
+import { useState } from "react";
 
 export const useLogin = () => {
+  //   const router = useRouter();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  async function handleLogin(event) {
+  async function handlerSubmitLogin(event) {
     event.preventDefault();
-    
+
     const res = await fetch("https://eventmakers-api.fly.dev/auth/login", {
       method: "POST",
       headers: {
@@ -20,15 +20,16 @@ export const useLogin = () => {
         password,
       }),
     });
-
     const { payload, token } = await res.json();
 
-    // save payload to local storage
+    // set payload to localstorage
     localStorage.setItem("user", JSON.stringify(payload));
 
-    // store token to cookies
+    // set token to cookie
     Cookies.set("token", token);
+
+    // router.push("/dashboard");
   }
 
-  return { handleSubmitLogin, setEmail, setPassword };
+  return { handlerSubmitLogin, setEmail, setPassword };
 };

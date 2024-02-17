@@ -1,7 +1,5 @@
+import { Login } from "@/components/auth/components/login";
+
 export default function Home() {
-  return (
-    <main className="p-8 bg-emerald-200">
-      Login
-    </main>
-  );
+  return <Login />;
 }

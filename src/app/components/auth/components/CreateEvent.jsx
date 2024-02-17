@@ -1,7 +1,7 @@
 "use client";
 
-import useCreateEvent from "@/app/useCreateEvent";
 import React from "react";
+import useCreateEvent from "../../hooks/useCreateEvent";
 
 export const CreateEvent = () => {
   const {

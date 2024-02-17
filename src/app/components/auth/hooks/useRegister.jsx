@@ -25,11 +25,11 @@ export const useRegister = () => {
     const data = await res.json();
     console.log(data);
 
-    // // save payload to local storage
-    // localStorage.setItem("user", JSON.stringify(payload));
+    // save payload to local storage
+    localStorage.setItem("user", JSON.stringify(payload));
 
-    // // store token to cookies
-    // Cookies.set("token", token);
+    // store token to cookies
+    Cookies.set("token", token);
   }
 
   return { handleSubmitRegister, setName, setEmail, setPassword };

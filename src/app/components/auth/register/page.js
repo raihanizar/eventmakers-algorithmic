@@ -2,7 +2,7 @@
 
 import { useRegister } from "../hooks/useRegister";
 
-export const Register = () => {
+export default function RegisterPage() {
   const { handleSubmitRegister, setName, setEmail, setPassword } =
     useRegister();
 
@@ -26,4 +26,4 @@ export const Register = () => {
       </form>
     </div>
   );
-};
+}

@@ -1,5 +1,5 @@
-import RegisterPage from "./register/page";
+import { Login } from "@/components/auth/components/login";
 
 export default function Home() {
-  return <RegisterPage />;
+  return <Login />;
 }

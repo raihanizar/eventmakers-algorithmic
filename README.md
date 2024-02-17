@@ -12,10 +12,10 @@
 - Hanya ubah **kode yang relevan** dengan *task*.
 - Perhatikan standar penulisan:
   - Nama variabel menggunakan camelCase: `eventName`, `joinEventId`
-  - Nama file component menggunakan huruf kapital: `Header jsx`, `Button.jsx` 
+  - Nama *file component* menggunakan huruf kapital: `Header jsx`, `Button.jsx` 
 
 ### Cek Git
-- Selalu **cek kondisi git** (`git status`) sebelum melakukan push.
+- Selalu **cek kondisi git** (`git status`) sebelum melakukan *push*.
 
 ---
 

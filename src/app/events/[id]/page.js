@@ -1,28 +1,22 @@
-export default function Page({ params }) {
-  const dataDummy = {
-    "message": "All events fetched successfully",
-    "data": {
-      "events": {
-        "id": "ds_RvnzsAqIpBVe0aW",
-        "title": "Indonesia Mom, Baby & Kids Expo (IMOBY) Bandung 2024",
-        "description": "Dear Family Lover, Kalo kamu baca ini, artinya kamu diundang ke IMOBY Indonesia Mom & Baby, Kids Expo. Event Promo bermanfaat dan terlengkap dengan discount fantastic di Bandung! Explore 250+ brands Mom, Baby, Kids dengan berbagai diskon up to 90%, buy 1 get 1, free gift, dapatkan promo gledek di morning attack pkl 10.00 pagi setiap harinya! Yuk datang lebih pagi rasakan keseruannya. Ada juga Hiburan menarik meet & greet bersama guest star mom artist dan masih banyak lagi hiburan lainnya. Yang sama pentingnya Moms and Dads dapat mengikuti berbagai Talkshow edukatif dengan ahli professional dibidangnya! Pssst bakal banyak DOORPRIZE dengan hadiah utama Motor, emas, TV, dan berbagai Giveaway! Yuk, beli ticketsnya sekarang dan ajak semua bunda bunda bestie-mu buat seru-seruan bareng di IMOBY Bandung. Let’s have the best shopping times with much benefits on hands! Only at IMOBY Bandung Friday-Sunday, 1 - 3 Maret 2023 di Sudirman Grand Ballroom. See you Familia!  Informasi selengkapnya, Follow Instagram : imoby.mye",
-        "image": "https://res.cloudinary.com/dgt0nrylf/image/upload/v1707417973/eventsmaker/gb9aaw7qat6jbexqwuk4.png",
-        "dateTime": "01 Maret 2024",
-        "author": "ds_v3jTVjbKWukzTUd"
-      },
-      "participants": [
-        {
-          "id": "ds_O8lFVdZb7gZdrSe",
-          "name": "Panji Pusaka",
-          "email": "panji@devscale.id",
-          "phoneNumber": "081231231231",
-          "eventId": "ds_RvnzsAqIpBVe0aW"
-        }
-      ]
-    }
-  }
+import 'dotenv/config'
 
-  const { message, data } = dataDummy
+async function getData(id) {
+  try {
+    const response = await fetch(`https://eventmakers-api.fly.dev/events/${id}`, {
+      headers: {
+        Authorization: `Bearer ${process.env.TOKEN}`
+      }
+    })
+    const data = await response.json()
+    return data
+  } catch (error) {
+    return null
+  }
+}
+
+export default async function Page({ params }) {
+  
+  const { message, data } = await getData(params.id)
 
   return (
     <main className="p-8 bg-rose-200 flex flex-col gap-y-8">

@@ -1,6 +1,6 @@
 "use client";
 
-import { useRegister } from "../components/auth/hooks/useRegister";
+import { useRegister } from "@/components/auth/hooks/useRegister";
 
 export default function RegisterPage() {
   const { handleSubmitRegister, setName, setEmail, setPassword } =

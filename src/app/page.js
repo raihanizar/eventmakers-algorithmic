@@ -1,6 +1,5 @@
-import { Login } from "@/components/auth/components/login";
-import { UseUpdateEvent } from "@/components/auth/hooks/useUpdateEvent";
+import { Login } from "@/components/Login";
 
-export default function Home() {
-  return <UseUpdateEvent />;
+export default function Page() {
+  return <Login />;
 }

@@ -25,6 +25,7 @@ export default function page() {
         ></input>
         <input
           placeholder="image"
+          type="text"
           onChange={(e) => setImage(e.target.value)}
         ></input>
         <button>Create Event</button>

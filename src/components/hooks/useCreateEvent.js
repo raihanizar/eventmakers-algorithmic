@@ -3,13 +3,13 @@
 import Cookies from "js-cookie";
 import { useRouter } from "next/navigation";
 import React, { useState } from "react";
+import toast from "react-hot-toast";
 
 export default function useCreateEvent() {
   const router = useRouter();
 
-  const userFromLs = localStorage.getItem("user");
-  const user = JSON.parse(userFromLs);
-  // console.log(user);
+  const userData = localStorage.getItem("user");
+  const user = JSON.parse(userData);
 
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
@@ -29,6 +29,7 @@ export default function useCreateEvent() {
         "Content-Type": "application/json",
         Authorization: `Bearer ${token}`,
       },
+
       body: JSON.stringify({
         token,
         title,
@@ -39,6 +40,15 @@ export default function useCreateEvent() {
       }),
     });
 
+    router.refresh();
+    toast.success("berhasil menambahkan list");
+
+    // ini ga ngaruh, ga hilangg
+    setTitle("");
+    setDescription("");
+    setDate("");
+    setImage("");
+
     const data = await res.json();
     if (!!res.ok) {
       return data;
@@ -46,14 +56,6 @@ export default function useCreateEvent() {
       throw new Error(data.message);
     }
   }
-
-  // kosongin input setelah isi
-  setTitle("");
-  setDescription("");
-  setDate("");
-  setImage("");
-
-  router.refresh();
 
   return {
     handleCreateEvent,

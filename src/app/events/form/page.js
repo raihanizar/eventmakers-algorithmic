@@ -1,15 +1,11 @@
+"use client";
+
 import useCreateEvent from "@/components/hooks/useCreateEvent";
 import React from "react";
 
 export default function page() {
-  const {
-    handleCreateEvent,
-    setTitle,
-    setDescription,
-    setImage,
-    setDate,
-    setAuthor,
-  } = useCreateEvent();
+  const { handleCreateEvent, setTitle, setDescription, setImage, setDate } =
+    useCreateEvent();
 
   return (
     <div>
@@ -28,8 +24,8 @@ export default function page() {
           onChange={(e) => setDate(e.target.value)}
         ></input>
         <input
-          placeholder="author"
-          onChange={(e) => setAuthor(e.target.value)}
+          placeholder="image"
+          onChange={(e) => setImage(e.target.value)}
         ></input>
         <button>Create Event</button>
       </form>

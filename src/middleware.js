@@ -4,7 +4,7 @@ import * as jose from "jose";
 
 export async function middleware(request) {
   console.log("ini dari middleware");
-  const token = cookies().get("token").value;
+  const token = cookies().get("token")?.value;
   const secretKey = process.env.SECRET_KEY;
   const secret = new TextEncoder().encode(secretKey);
 
@@ -22,4 +22,4 @@ export async function middleware(request) {
 }
 
 // mencoba cari cara supaya ga reload terus menurus di events/form tapi belum nemu caranya
-export const config = { matcher: ["/events/:path*"] };
+export const config = { matcher: ["/dashboard"] };

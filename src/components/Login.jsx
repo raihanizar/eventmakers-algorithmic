@@ -13,6 +13,7 @@ export const Login = () => {
         
         <form onSubmit={handleSubmitLogin} className="space-y-12 w-full sm:w-[400px]">
           <div className="grid w-full items-center gap-1.5">
+          <label>Email</label>
           <input 
           className="w-full" 
           required 
@@ -24,6 +25,7 @@ export const Login = () => {
           </div>
         
           <div className="grid w-full items-center gap-1.5">
+          <label>Password</label>
           <input 
           className="w-full" 
           required 
@@ -38,9 +40,9 @@ export const Login = () => {
 
         <p className="text-center">
           Need to create an account? {' '}
-          <Link className="text-indigo-500 hover:underline" href="/useRegister">
+          <Link className="text-indigo-500 hover:underline" href="./register">
             Create Account
-          </Link>
+          </Link>{' '}
         </p>
       </div>
     </div>

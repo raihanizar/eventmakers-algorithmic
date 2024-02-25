@@ -1,6 +1,6 @@
 import { EditEvent } from "@/components/EditEvents";
 
-export async function requestEvent(eventid) {
+export async function getEvent(eventid) {
   const res = await fetch(`https://eventmakers-api.fly.dev/events/${eventid}`, {
     method: "GET",
     cache: "no-cache",
@@ -17,8 +17,7 @@ export async function requestEvent(eventid) {
 export default async function Page({ params }) {
   const { id } = params;
 
-  const event = await requestEvent(id);
-  console.log(event);
+  const event = await getEvent(id);
 
   return <EditEvent event={event} />;
 }

@@ -47,6 +47,9 @@ export const ListEvents = () => {
 
   return (
     <main className="p-8 bg-rose-200 flex flex-col gap-y-8">
+      <header>
+        <Link href={"/dashboard"}>Dashboard</Link>
+      </header>
       <div>Login as: {userData ? userData.name : ""}</div>
 
       {eventData ? (

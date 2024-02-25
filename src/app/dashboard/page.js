@@ -2,7 +2,7 @@ import { cookies } from "next/headers";
 import { jwtDecode } from "jwt-decode";
 import { UserDashboard } from "@/components/UserDashboard";
 
-export function session() {
+export function getUsers() {
   const token = cookies().get("token")?.value;
   const userData = jwtDecode(token);
   return { token, userData };
@@ -17,7 +17,7 @@ export async function listEvents() {
 }
 
 export default async function Dashboard() {
-  const { userData } = session();
+  const { userData } = getUsers();
   const authorID = userData.id;
 
   let events;

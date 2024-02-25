@@ -2,13 +2,18 @@
 
 import Cookies from "js-cookie";
 import { useRouter } from "next/navigation";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 
-export default function useCreateEvent() {
+export const UseCreateEvent = () => {
   const router = useRouter();
 
-  const userData = localStorage.getItem("user");
+  let userData;
+
+  if (typeof window !== "undefined") {
+    userData = localStorage.getItem("user");
+  }
+
   const user = JSON.parse(userData);
 
   const [title, setTitle] = useState("");
@@ -41,7 +46,8 @@ export default function useCreateEvent() {
     });
 
     router.refresh();
-    toast.success("berhasil menambahkan list");
+    toast.success("berhasil menambahkan events");
+    router.push("/dashboard");
 
     // ini ga ngaruh, ga hilangg
     setTitle("");
@@ -57,12 +63,33 @@ export default function useCreateEvent() {
     }
   }
 
-  return {
-    handleCreateEvent,
-    setTitle,
-    setDescription,
-    setImage,
-    setDate,
-    setAuthor,
-  };
-}
+  return (
+    <div>
+      <form onSubmit={handleCreateEvent}>
+        <input
+          placeholder="title"
+          onChange={(e) => setTitle(e.target.value)}
+          required
+        ></input>
+        <input
+          placeholder="description"
+          onChange={(e) => setDescription(e.target.value)}
+          required
+        ></input>
+        <input
+          placeholder="date"
+          type="date"
+          onChange={(e) => setDate(e.target.value)}
+          required
+        ></input>
+        <input
+          placeholder="image"
+          type="file"
+          onChange={(e) => setImage(e.target.value)}
+          required
+        ></input>
+        <button>Create Event</button>
+      </form>
+    </div>
+  );
+};

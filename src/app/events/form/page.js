@@ -1,8 +1,8 @@
 "use client";
 
-import { UseCreateEvent } from "@/components/UseCreateEvent";
+import { CreateEvent } from "@/components/CreateEvent";
 import React from "react";
 
 export default function page() {
-  return <UseCreateEvent />;
+  return <CreateEvent />;
 }

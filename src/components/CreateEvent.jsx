@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 
-export const UseCreateEvent = () => {
+export const CreateEvent = () => {
   const router = useRouter();
 
   let userData;

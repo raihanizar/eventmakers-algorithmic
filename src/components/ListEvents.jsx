@@ -1,19 +1,17 @@
 "use client";
 
-import { useState, useEffect } from "react";
-import Cookies from "js-cookie";
-import Link from "next/link";
+import { useState, useEffect } from 'react';
+import { SearchEvents } from "@/components/SearchEvents";
+import Cookies from "js-cookie"
+import Link from 'next/link'
 
-export const getEventData = async (token, id = "") => {
+const getEventData = async (token, query = "") => {
   try {
-    const response = await fetch(
-      `https://eventmakers-api.fly.dev/events/${id}`,
-      {
-        headers: { Authorization: `Bearer ${token}` },
-      }
-    );
-    const res = await response.json();
-    return res;
+    const response = await fetch(`https://eventmakers-api.fly.dev/events?search=${query}`, {
+      headers: { Authorization: `Bearer ${token}` }
+    })
+    const res = await response.json()
+    return res
   } catch (error) {
     console.error(error);
     return {
@@ -27,7 +25,9 @@ export const ListEvents = () => {
   const [userData, setUserData] = useState(null);
   const [eventData, setEventData] = useState(null);
   const [eventMessage, setEventMessage] = useState("");
+  const [searchQuery, setSearchQuery] = useState("");
 
+  // pertama kali, munculkan semua data event
   useEffect(() => {
     const payload = localStorage.getItem("user");
     setUserData(JSON.parse(payload));
@@ -41,9 +41,26 @@ export const ListEvents = () => {
       } catch (error) {
         console.error(error);
       }
-    };
+    }
     fetchData();
-  }, []);
+  }, [])
+
+  const handleSearchData = async (searchQuery) => {
+    const token = Cookies.get("token");
+
+    try {
+      const { data, message } = await getEventData(token, searchQuery);
+      setEventData(data)
+      setEventMessage(message)
+    } catch (error) {
+      console.error(error)
+    }
+  }
+
+  const handleReset = () => {
+    setSearchQuery("")
+    handleSearchData("")
+  }
 
   return (
     <main className="p-8 bg-rose-200 flex flex-col gap-y-8">
@@ -52,8 +69,14 @@ export const ListEvents = () => {
       </header>
       <div>Login as: {userData ? userData.name : ""}</div>
 
-      {eventData ? (
-        eventData.map((data, idx) => (
+      <SearchEvents 
+        searchQuery={searchQuery}
+        setSearchQuery={setSearchQuery} 
+        handleSearchData={() => handleSearchData(searchQuery)}
+        handleReset={() => handleReset()} />
+
+      {eventData
+        ? eventData.map((data, idx) => (
           <div key={idx} className="flex flex-col gap-y-4">
             <div className="flex flex-col gap-y-2">
               <h2 className="text-2xl">{data.events.title}</h2>

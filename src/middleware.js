@@ -22,4 +22,4 @@ export async function middleware(request) {
 }
 
 // mencoba cari cara supaya ga reload terus menurus di events/form tapi belum nemu caranya
-export const config = { matcher: ["/events/:path*"] };
+export const config = { matcher: ["/dashboard"] };

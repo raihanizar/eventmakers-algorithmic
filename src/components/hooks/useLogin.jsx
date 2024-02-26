@@ -30,8 +30,7 @@ export const useLogin = () => {
       Cookies.set("token", token);
 
       // jika berhasil login, redirect ke halaman events
-      router.push("/events");
-
+      router.push("/dashboard");
     } catch {
       // jika gagal login, kembalikan ke halaman login
       router.push("/");

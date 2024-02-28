@@ -4,6 +4,8 @@ import Cookies from "js-cookie";
 import { useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
 import toast from "react-hot-toast";
+import { MoveLeft } from "lucide-react";
+import { Plus } from 'lucide-react';
 
 export const CreateEvent = () => {
   const router = useRouter();
@@ -64,32 +66,71 @@ export const CreateEvent = () => {
   }
 
   return (
-    <div>
-      <form onSubmit={handleCreateEvent}>
-        <input
-          placeholder="title"
-          onChange={(e) => setTitle(e.target.value)}
-          required
-        ></input>
-        <input
-          placeholder="description"
-          onChange={(e) => setDescription(e.target.value)}
-          required
-        ></input>
-        <input
-          placeholder="date"
-          type="date"
-          onChange={(e) => setDate(e.target.value)}
-          required
-        ></input>
-        <input
-          placeholder="image"
-          type="file"
-          onChange={(e) => setImage(e.target.value)}
-          required
-        ></input>
-        <button>Create Event</button>
-      </form>
-    </div>
+    <main className="mx-6 lg:mx-40">
+
+      <button className="hover:bg-zinc-100 flex flex-row gap-2 p-2 rounded-lg border-2 mb-6" onClick={() => router.push("/dashboard")}>
+        <MoveLeft />
+        <p className="font-bold text-zinc-600">Back to Dashboard</p>
+      </button>
+
+      <div className="flex flex-col gap-6">
+        {/* Title */}
+        <div className="flex flex-col gap-2">
+          <h2 className="text-lg font-bold">Creat New Event</h2>
+        </div>
+
+        <form className="flex flex-col gap-2" onSubmit={handleCreateEvent}>
+          <div className="">
+            <p>Title</p>
+            <input
+              className="w-full input input-primary"
+              type="text"
+              placeholder="input event title..."
+              value={title}
+              onChange={(e) => setTitle(e.target.value)}
+              required
+            ></input>
+          </div>
+          <div className="">
+            <p>Description</p>
+            <input
+              className="w-full textarea textarea-primary"
+              placeholder="input event description..."
+              value={description}
+              onChange={(e) => setDescription(e.target.value)}
+              required
+            ></input>
+          </div>
+          <div className="flex flex-row gap-4">
+            <div className="flex-1">
+              <p>Date</p>
+              <input
+                className="w-full input input-primary"
+                value={dateTime}
+                type="date"
+                onChange={(e) => setDate(e.target.value)}
+                required
+              ></input>
+            </div>
+            <div className="flex-1">
+              <p>Image Link <span className="text-accent">(optional)</span></p>
+              <input
+                className="w-full input input-primary"
+                value={image}
+                type="text"
+                onChange={(e) => setImage(e.target.value)}
+                required
+              ></input>
+            </div>
+          </div>
+
+          <button className="btn btn-accent mt-6">
+            <p>Create New Event</p>
+            <Plus />
+          </button>
+        </form>
+      </div>
+    </main>
+
   );
 };

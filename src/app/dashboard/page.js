@@ -25,7 +25,7 @@ export default async function Dashboard() {
 
   const { data } = await listEvents();
   const userEvent = data.filter((item) => item.events.author === authorID);
-  console.log(data.filter(item));
+  // console.log(data.filter(item));
 
   events = userEvent;
 

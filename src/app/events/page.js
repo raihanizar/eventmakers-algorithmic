@@ -5,7 +5,7 @@ import { ListEvents } from "@/components/ListEvents";
 export default function Page() {
   return (
     <main>
-      <DashboardHeader/>
+      <DashboardHeader /> 
       <ListEvents />
       <Footer/>
     </main>

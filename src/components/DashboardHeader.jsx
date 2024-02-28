@@ -3,6 +3,7 @@ import Cookies from "js-cookie";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
+import { IconAlgo } from "./IconAlgo";
 
 export const DashboardHeader = () => {
   const router = useRouter();
@@ -22,7 +23,9 @@ export const DashboardHeader = () => {
 
   return (
     <div className="flex justify-between  mx-56 items-center my-4">
-      <Link href={"/events"}>Aghorithmic</Link>
+      <Link href={"/events"}>
+        <IconAlgo />
+      </Link>
       <div className="flex gap-4 items-center">
         <div className="text-lg font-bold">{user?.name}</div>
         <button onClick={handleLogout} className="btn bg-black text-white">

@@ -10,6 +10,7 @@ export const DetailEvents = ({ id }) => {
   const [eventMessage, setEventMessage] = useState("");
   const router = useRouter();
 
+
   useEffect(() => {
     const payload = localStorage.getItem("user");
     setUserData(JSON.parse(payload));

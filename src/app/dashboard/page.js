@@ -19,12 +19,22 @@ export async function listEvents() {
 export default async function Dashboard() {
   const { userData } = getUsers();
   const authorID = userData.id;
+  const authorEmail = userData.email;
 
   let events;
 
   const { data } = await listEvents();
   const userEvent = data.filter((item) => item.events.author === authorID);
+  console.log(data.filter(item));
+
   events = userEvent;
 
-  return <UserDashboard events={events} userData={userData} />;
+  return (
+    <main>
+      <div>{/* <JoinEventDashboard /> */}</div>
+      <div>
+        <UserDashboard events={events} />
+      </div>
+    </main>
+  );
 }

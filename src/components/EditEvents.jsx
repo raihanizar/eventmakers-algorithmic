@@ -4,6 +4,7 @@ import Cookies from "js-cookie";
 import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 import toast from "react-hot-toast";
+import { MoveLeft } from "lucide-react";
 
 export const EditEvent = ({ event }) => {
   const { events } = event;
@@ -54,6 +55,7 @@ export const EditEvent = ({ event }) => {
   return (
     <main>
       <div>
+        <MoveLeft />
         <form onSubmit={handleEditEvent}>
           <input
             type="text"

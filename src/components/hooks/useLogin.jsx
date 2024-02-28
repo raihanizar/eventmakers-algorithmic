@@ -1,6 +1,7 @@
 import Cookies from "js-cookie";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
+import toast from "react-hot-toast";
 
 export const useLogin = () => {
   const router = useRouter();
@@ -28,11 +29,13 @@ export const useLogin = () => {
 
       // set token to cookie
       Cookies.set("token", token);
+      toast.success("selamat datang kembali");
 
       // jika berhasil login, redirect ke halaman events
       router.push("/dashboard");
     } catch {
       // jika gagal login, kembalikan ke halaman login
+      toast.error("coba lagi");
       router.push("/");
     }
   }

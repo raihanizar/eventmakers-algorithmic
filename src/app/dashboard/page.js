@@ -1,6 +1,8 @@
 import { cookies } from "next/headers";
 import { jwtDecode } from "jwt-decode";
 import { UserDashboard } from "@/components/UserDashboard";
+import { DashboardHeader } from "@/components/DashboardHeader";
+import { Footer } from "@/components/Footer";
 
 export function getUsers() {
   const token = cookies().get("token")?.value;
@@ -31,10 +33,15 @@ export default async function Dashboard() {
 
   return (
     <main>
-      <div>{/* <JoinEventDashboard /> */}</div>
+      <div>
+        <DashboardHeader />
+      </div>
       <div>
         <UserDashboard events={events} />
       </div>
+      <footer className="mt-10">
+        <Footer />
+      </footer>
     </main>
   );
 }

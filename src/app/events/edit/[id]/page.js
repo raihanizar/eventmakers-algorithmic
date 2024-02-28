@@ -1,4 +1,6 @@
 import { EditEvent } from "@/components/EditEvents";
+import { DashboardHeader } from "@/components/DashboardHeader";
+import { Footer } from "@/components/Footer";
 
 export async function getEvent(eventid) {
   const res = await fetch(`https://eventmakers-api.fly.dev/events/${eventid}`, {
@@ -19,5 +21,11 @@ export default async function Page({ params }) {
 
   const event = await getEvent(id);
 
-  return <EditEvent event={event} />;
+  return (
+    <main>
+      <DashboardHeader />
+      <EditEvent event={event} />
+      <Footer />
+    </main>
+  );
 }

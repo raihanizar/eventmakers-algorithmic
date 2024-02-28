@@ -7,8 +7,8 @@ export const UserDashboard = ({ events }) => {
   return (
     <main className="max-w-screen-md w-full m-auto ">
       <header></header>
-      Dashboard
-      <div className="text-2xl font-bold mb-4">My Events</div>
+      <h1 className="text-4xl font-bold mb-10">Dashboard</h1>
+      <div className="text-2xl font-bold mb-4">Events Saya</div>
       <div className="space-y-4">
         {events.map(({ events }) => (
           <div
@@ -33,7 +33,7 @@ export const UserDashboard = ({ events }) => {
                 href={`/events/edit/${events.id}`}
                 className="w-28 text-white btn btn-neutral font-semibold pl-2 ml-2 hover:text-blue-500 "
               >
-                edit
+                edit event
               </Link>
             </div>
           </div>
@@ -51,7 +51,7 @@ export const UserDashboard = ({ events }) => {
           className="text-white btn btn-accent font-semibold pl-2 mt-2 w-40"
           href={"/events/form"}
         >
-          Buat Event
+          Buat Event Baru
         </Link>
       </div>
     </main>

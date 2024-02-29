@@ -8,7 +8,7 @@ export const SearchEvents = ({
 }) => {
   return (
     <div className="flex flex-row gap-x-2 items-center ">
-      <p>Search Event: </p>
+      <p>Cari acara: </p>
       <input
         className="input input-primary"
         type="text"

@@ -3,7 +3,9 @@
 @tailwind utilities;
 
 @layer base {
-  input, textarea, button {
-    @apply block
+  input,
+  textarea,
+  button {
+    @apply block;
   }
 }

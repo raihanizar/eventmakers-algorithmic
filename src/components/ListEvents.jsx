@@ -118,19 +118,19 @@ export const ListEvents = () => {
 
                   <div className="line-clamp-1">
                     <div>
-                      <p className="font-semibold">participants :</p>
+                      <p className="font-semibold">jumlah peserta :</p>
                     </div>
                     <div className="flex gap-1 max-w-96 line-clamp-2">
                       {data.participants.length > 0 ? (
-                        data.participants.map((participant, _) => (
-                          <p
-                            key={participant.id}
-                            className="line-clamp-2 tooltip"
-                            data-tip={data.participants.name}
-                          >
-                            {participant.name}
-                          </p>
-                        ))
+                        // (
+                        //   data.participants.map((participant, _) => (
+                        <p
+                        // key={participant.id}
+                        // className="line-clamp-2 tooltip"
+                        // data-tip={data.participants.name}
+                        >
+                          {data.participants.length} peserta
+                        </p>
                       ) : (
                         <p className="text-gray-500 italic">no participant</p>
                       )}

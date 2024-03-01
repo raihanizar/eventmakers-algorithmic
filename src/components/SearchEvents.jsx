@@ -1,13 +1,28 @@
-"use client"
+"use client";
 
-export const SearchEvents = ({ searchQuery, setSearchQuery, handleSearchData, handleReset }) => {
-
+export const SearchEvents = ({
+  searchQuery,
+  setSearchQuery,
+  handleSearchData,
+  handleReset,
+}) => {
   return (
-    <div className="flex flex-row gap-x-4 items-center">
-      <p>Search Event: </p>
-      <input className="rounded" type="text" value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)} />
-      <button className="bg-slate-800 text-slate-50 p-2 rounded" onClick={handleSearchData}>search</button>
-      <button className="bg-slate-800 text-slate-50 p-2 rounded" onClick={handleReset}>reset</button>
+    <div className="flex flex-row gap-x-2 items-center ">
+      <p>Cari acara: </p>
+      <input
+        className="input input-primary"
+        type="text"
+        value={searchQuery}
+        onChange={(e) => setSearchQuery(e.target.value)}
+      />
+      <div className="space-x-2">
+        <button className="btn btn-active w-20" onClick={handleSearchData}>
+          cari
+        </button>
+        <button className="btn btn-active w-20" onClick={handleReset}>
+          reset
+        </button>
+      </div>
     </div>
-  )
-}
+  );
+};

@@ -27,6 +27,7 @@ const getEventData = async (token, query = "") => {
 export const ListEvents = () => {
   const [userData, setUserData] = useState(null);
   const [eventData, setEventData] = useState(null);
+  console.log(eventData);
   const [eventMessage, setEventMessage] = useState("");
   const [searchQuery, setSearchQuery] = useState("");
 
@@ -66,51 +67,92 @@ export const ListEvents = () => {
   };
 
   return (
-    <main className="p-8 bg-rose-200 flex flex-col gap-y-8">
-      <header>
+    <main className="p-8 gap-y-8 flex flex-col justify-center items-center min-h-screen">
+      {/* <header>
         <Link href={"/dashboard"}>Dashboard</Link>
-      </header>
-      <div>Login as: {userData ? userData.name : ""}</div>
+      </header> */}
+      {/* <div>Login as: {userData ? userData.name : ""}</div> */}
 
-      <SearchEvents
-        searchQuery={searchQuery}
-        setSearchQuery={setSearchQuery}
-        handleSearchData={() => handleSearchData(searchQuery)}
-        handleReset={() => handleReset()}
-      />
-
-      {eventData ? (
-        eventData.map((data, idx) => (
-          <div key={idx} className="flex flex-col gap-y-4">
-            <div className="flex flex-col gap-y-2">
-              <h2 className="text-2xl">{data.events.title}</h2>
-              <p>{data.events.description}</p>
-              <p>{data.events.dateTime}</p>
-            </div>
-
-            <div className="flex flex-col gap-x-2">
-              {data.participants.length > 0 ? (
-                data.participants.map((participant, _) => (
-                  <p key={participant.id} className="text-gray-500 italic">
-                    {participant.name}
-                  </p>
-                ))
-              ) : (
-                <p className="text-gray-500 italic">no participant</p>
-              )}
-            </div>
-
-            <Link
-              className="bg-slate-800 text-slate-50 p-2 rounded"
-              href={`/events/${data.events.id}`}
-            >
-              lihat detail
-            </Link>
+      <div className="container flex flex-col justify-center items-center py-6 space-y-6 md:py-12 lg:space-y-10">
+        <div className="flex flex-col items-center justify-center space-y-4 text-center md:space-y-2">
+          <div className="space-y-2">
+            <h1 className="text-3xl font-bold tracking-tighter sm:text-5xl md:text-6xl">
+              Algo Events
+            </h1>
+            <p className="mx-auto max-w-[600px] text-gray-500 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed dark:text-gray-400">
+              Temukan acara yang menarik minatmu dan bergabunglah menjadi orang
+              yang bermanfaat.
+            </p>
           </div>
-        ))
-      ) : (
-        <div>no data</div>
-      )}
+        </div>
+
+        <SearchEvents
+          searchQuery={searchQuery}
+          setSearchQuery={setSearchQuery}
+          handleSearchData={() => handleSearchData(searchQuery)}
+          handleReset={() => handleReset()}
+        />
+      </div>
+
+      <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3">
+        {eventData ? (
+          eventData.map((data, idx) => (
+            <Link
+              href={`/events/${data.events.id}`}
+              className="hover:translate-y-2"
+            >
+              <div
+                key={idx}
+                className="justify-between flex flex-col gap-2 h-full overflow-hidden rounded-xl border bg-indigo-50 border-gray-100 dark:border-gray-800"
+              >
+                <div className="p-4 space-y-2">
+                  <img
+                    src={data.events.image}
+                    className="object-cover h-48 w-104 rounded-md flex justify-center items-center"
+                  ></img>
+                  <h2 className="text-xl font-bold">{data.events.title}</h2>
+                  <p className="text-sm text-gray-500 dark:text-gray-400">
+                    {data.events.dateTime}
+                  </p>
+                  <p className="line-clamp-3">{data.events.description}</p>
+
+                  <div className="line-clamp-1">
+                    <div>
+                      <p className="font-semibold">jumlah peserta :</p>
+                    </div>
+                    <div className="flex gap-1 max-w-96 line-clamp-2">
+                      {data.participants.length > 0 ? (
+                        // (
+                        //   data.participants.map((participant, _) => (
+                        <p
+                        // key={participant.id}
+                        // className="line-clamp-2 tooltip"
+                        // data-tip={data.participants.name}
+                        >
+                          {data.participants.length} peserta
+                        </p>
+                      ) : (
+                        <p className="text-gray-500 italic">no participant</p>
+                      )}
+                    </div>
+                  </div>
+                </div>
+
+                {/* <Link
+                  className="btn btn-active p-2 rounded justify-center flex"
+                  size="sm"
+                  variant="outline"
+                  href={`/events/${data.events.id}`}
+                >
+                  lihat detail
+                </Link> */}
+              </div>
+            </Link>
+          ))
+        ) : (
+          <div>no data</div>
+        )}
+      </div>
     </main>
   );
 };

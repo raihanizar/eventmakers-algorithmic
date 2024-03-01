@@ -6,12 +6,13 @@ module.exports = {
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
+    fontFamily: { display: "Boiling" },
     extend: {
       // add extra themes here
     },
   },
   plugins: [require("daisyui")],
   daisyui: {
-    themes: ['light']
-  }
+    themes: ["light"],
+  },
 };

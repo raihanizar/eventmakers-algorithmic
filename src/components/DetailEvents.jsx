@@ -3,13 +3,13 @@
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import Cookies from "js-cookie";
+import { MoveLeft } from "lucide-react";
 
 export const DetailEvents = ({ id }) => {
   const [userData, setUserData] = useState(null);
   const [eventData, setEventData] = useState(null);
   const [eventMessage, setEventMessage] = useState("");
   const router = useRouter();
-
 
   useEffect(() => {
     const payload = localStorage.getItem("user");
@@ -83,45 +83,58 @@ export const DetailEvents = ({ id }) => {
   };
 
   return (
-    <main className="p-8 bg-rose-200 flex flex-col gap-y-8">
-      <div>Login as: {userData ? userData.name : ""}</div>
+    <main>
+      {/* <div>Login as: {userData ? userData.name : ""}</div> */}
 
-      {eventData ? (
-        <div className="flex flex-col gap-y-4">
-          <div className="flex flex-col gap-y-2">
-            <h2 className="text-2xl">{eventData.events.title}</h2>
-            <p>{eventData.events.description}</p>
-            <p>{eventData.events.dateTime}</p>
+      <div className="p-4 space-y-2 items-center justify-center flex flex-col">
+        {eventData ? (
+          <div className="justify-between w-[1000px] flex flex-col gap-2 h-full overflow-hidden rounded-xl border  border-gray-100 dark:border-gray-800">
+            <div className="p-4 space-y-2">
+              <button onClick={() => router.back()} className="flex gap-2">
+                <MoveLeft />{" "}
+                <span className="font-bold ">kembali ke menu sebelumnya</span>
+              </button>
+              <img
+                src={eventData.events.image}
+                className="object-cover h-48 w-104 rounded-md flex justify-center items-center"
+              ></img>
+              <h2 className="text-2xl font-bold">{eventData.events.title}</h2>
+              <p className="text-sm text-gray-500 dark:text-gray-400">
+                {eventData.events.dateTime}
+              </p>
+              <p>{eventData.events.description}</p>
+            </div>
+            <div className="p-4 pb-0 font-semibold">
+              Peserta yang sudah bergabung:{" "}
+            </div>
+            <div className="flex gap-x-2 p-4 pt-0">
+              {eventData.participants.length > 0 ? (
+                eventData.participants.map((participant, _) => (
+                  <p key={participant.id} className="text-gray-500 italic">
+                    {participant.name}
+                  </p>
+                ))
+              ) : (
+                <p className="text-gray-500 italic">no participant</p>
+              )}
+            </div>
+            <button
+              className="btn btn-neutral text-base text-white"
+              onClick={() => handleJoinEvent(eventData.events.id)}
+            >
+              bergabung dengan event ini
+            </button>
+            {/* <button
+              className="bg-slate-800 text-slate-50 p-2 rounded"
+              onClick={() => router.back()}
+            >
+              kembali
+            </button> */}
           </div>
-
-          <div className="flex flex-col gap-x-2">
-            {eventData.participants.length > 0 ? (
-              eventData.participants.map((participant, _) => (
-                <p key={participant.id} className="text-gray-500 italic">
-                  {participant.name}
-                </p>
-              ))
-            ) : (
-              <p className="text-gray-500 italic">no participant</p>
-            )}
-          </div>
-
-          <button
-            className="bg-slate-800 text-slate-50 p-2 rounded"
-            onClick={() => handleJoinEvent(eventData.events.id)}
-          >
-            join
-          </button>
-          <button
-            className="bg-slate-800 text-slate-50 p-2 rounded"
-            onClick={() => router.back()}
-          >
-            kembali
-          </button>
-        </div>
-      ) : (
-        <p>no data</p>
-      )}
+        ) : (
+          <p>no data</p>
+        )}
+      </div>
     </main>
   );
 };

@@ -20,28 +20,21 @@ export async function listEvents() {
 
 export default async function Dashboard() {
   const { userData } = getUsers();
-  const authorID = userData.id;
-  const authorEmail = userData.email;
-
-  let events;
 
   const { data } = await listEvents();
-  const userEvent = data.filter((item) => item.events.author === authorID);
-  // console.log(data.filter(item));
+  const authoredEvent = data.filter((item) => item.events.author === userData.id);
+  const joinedEvent = data.filter((item) => item.participants.some(participant => participant.email === userData.email));
 
-  events = userEvent;
+  console.log(userData)
+  console.log(data)
+  console.log(joinedEvent)
+  console.log(authoredEvent)
 
   return (
     <main>
-      <div>
-        <DashboardHeader />
-      </div>
-      <div>
-        <UserDashboard events={events} />
-      </div>
-      <footer className="mt-10">
-        <Footer />
-      </footer>
+      <DashboardHeader />
+      <UserDashboard authoredEvent={authoredEvent} joinedEvent={joinedEvent} />
+      <Footer />
     </main>
   );
 }

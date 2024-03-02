@@ -7,8 +7,8 @@ export const SearchEvents = ({
   handleReset,
 }) => {
   return (
-    <div className="flex flex-row gap-x-2 items-center ">
-      <p>Cari acara: </p>
+    <div className="flex flex-row gap-x-2 justify-center items-center">
+      <p>Cari acara:</p>
       <input
         className="input input-primary"
         type="text"
@@ -17,10 +17,10 @@ export const SearchEvents = ({
       />
       <div className="space-x-2">
         <button className="btn btn-active w-20" onClick={handleSearchData}>
-          cari
+          Cari
         </button>
         <button className="btn btn-active w-20" onClick={handleReset}>
-          reset
+          Reset
         </button>
       </div>
     </div>

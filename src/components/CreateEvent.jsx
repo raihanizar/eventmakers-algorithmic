@@ -93,13 +93,13 @@ export const CreateEvent = () => {
           </div>
           <div className="">
             <p>Description</p>
-            <input
+            <textarea
               className="w-full textarea textarea-primary"
               placeholder="input event description..."
               value={description}
               onChange={(e) => setDescription(e.target.value)}
               required
-            ></input>
+            ></textarea>
           </div>
           <div className="flex flex-row gap-4">
             <div className="flex-1">
@@ -113,7 +113,7 @@ export const CreateEvent = () => {
               ></input>
             </div>
             <div className="flex-1">
-              <p>Image Link <span className="text-accent">(optional)</span></p>
+              <p>Image Link</p>
               <input
                 className="w-full input input-primary"
                 value={image}

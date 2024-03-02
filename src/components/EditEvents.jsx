@@ -102,12 +102,13 @@ export const EditEvent = ({ event }) => {
               ></input>
             </div>
             <div className="flex-1">
-              <p>Image Link <span className="text-accent">(optional)</span></p>
+              <p>Image Link</p>
               <input
                 className="w-full input input-primary"
                 value={image}
                 type="text"
                 onChange={(e) => setImage(e.target.value)}
+                required
               ></input>
             </div>
           </div>

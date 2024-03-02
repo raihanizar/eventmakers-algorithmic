@@ -36,7 +36,6 @@ export const useLogin = () => {
       console.log('push dashboard')
     } catch {
       // jika gagal login, kembalikan ke halaman login
-      console.log('error gais')
       toast.error("coba lagi");
       router.push("/");
     }

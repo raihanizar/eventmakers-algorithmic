@@ -8,26 +8,23 @@ import { MoveLeft } from "lucide-react";
 import { Plus } from 'lucide-react';
 
 export const CreateEvent = () => {
-  const router = useRouter();
-
-  let userData;
-
-  if (typeof window !== "undefined") {
-    userData = localStorage.getItem("user");
-  }
-
-  const user = JSON.parse(userData);
-
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [image, setImage] = useState("");
   const [dateTime, setDate] = useState("");
-  const [author, setAuthor] = useState(user.id);
+  const [userData, setUserData] = useState(null);
+  const [token, setToken] = useState("");
+
+  const router = useRouter();
+
+  useEffect(() => {
+    const userDataFromLS = localStorage.getItem("user");
+    setUserData(JSON.parse(userDataFromLS));
+    setToken(Cookies.get("token"));
+  }, [])
 
   async function handleCreateEvent(event) {
     event.preventDefault();
-
-    const token = Cookies.get("token");
 
     const res = await fetch("https://eventmakers-api.fly.dev/events/", {
       method: "POST",
@@ -42,8 +39,8 @@ export const CreateEvent = () => {
         title,
         description,
         image,
-        dateTime,
-        author,
+        dateTime, 
+        author: userData.id
       }),
     });
 
@@ -58,7 +55,7 @@ export const CreateEvent = () => {
     setImage("");
 
     const data = await res.json();
-    if (!!res.ok) {
+    if (res.ok) {
       return data;
     } else {
       throw new Error(data.message);

@@ -33,6 +33,7 @@ export const useLogin = () => {
 
       // jika berhasil login, redirect ke halaman events
       router.push("/dashboard");
+      console.log('push dashboard')
     } catch {
       // jika gagal login, kembalikan ke halaman login
       toast.error("coba lagi");
